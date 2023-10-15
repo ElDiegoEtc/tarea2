@@ -9,11 +9,10 @@ public class Expendedor {
     private Deposito sprite;
     private DepositoM monVu;
 
-    public Expendedor(int numBebidas, int precioBebidas) {
+    public Expendedor(int numBebidas,PrecioProducto precioProducto) {
         coca = new Deposito();
         sprite = new Deposito();
         monVu = new DepositoM();
-        this.precioBebidas = precioBebidas;
 
         int c = 100, s = 200;
         for(int i = 0; i < numBebidas; i++) {
