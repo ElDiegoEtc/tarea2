@@ -5,10 +5,6 @@ public class Super8 extends Dulce {
         super(serie);
     }
     public String ingerir(){
-        return "comiendo";
-    }
-
-    public String comer() {
         return "Super8";
     }
 

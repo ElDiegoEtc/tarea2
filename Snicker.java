@@ -5,10 +5,7 @@ public class Snicker extends Dulce {
         super(serie);
     }
     public String ingerir(){
-        return "comiendo";
-    }
-
-    public String comer() {
         return "Snicker";
     }
+
 }

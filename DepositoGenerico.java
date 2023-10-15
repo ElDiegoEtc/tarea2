@@ -9,11 +9,11 @@ public class DepositoGenerico<T> {
         items = new ArrayList<>();
     }
 
-    public void additem(T item) {
+    public void addItem(T item) {
         items.add(item);
     }
 
-    public T getitem() {
+    public T getItem() {
         if (items.size() == 0) {
             return null;
         } else {

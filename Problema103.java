@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Problema103 {
     public static void main(String[] args) {
 
-        Expendedor exp = new Expendedor(3,1000);
+        Expendedor exp = new Expendedor(3);
         Moneda m = null;
         Comprador c=null;
         m = new Moneda1500();

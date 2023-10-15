@@ -20,5 +20,4 @@ class Deposito {
         return bebidas.remove(0);
     }
 
-
 }

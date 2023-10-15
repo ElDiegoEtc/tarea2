@@ -1,6 +1,6 @@
 package com.example;
 
-enum PrecioProducto {
+enum TipoProducto {
     COCA(1000),
     SPRITE(1000),
     SNICKERS(1500),
@@ -8,7 +8,7 @@ enum PrecioProducto {
 
     private final int precio;
 
-    PrecioProducto(int precio) {
+    TipoProducto(int precio) {
         this.precio = precio;
     }
 
