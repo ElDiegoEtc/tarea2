@@ -8,7 +8,6 @@ class DepositoM {
     public DepositoM() {
         monedas = new ArrayList<Moneda>();
     }
-
     public void addMoneda(Moneda mon) {
         monedas.add(mon);
     }
@@ -19,5 +18,4 @@ class DepositoM {
         }
         return monedas.remove(0);
     }
-
 }
