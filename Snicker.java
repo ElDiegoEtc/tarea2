@@ -1,14 +1,12 @@
 package com.example;
 
 public class Snicker extends Dulce {
-    public Snicker(int serie) {
-        super(serie);
-    }
-    public String ingerir(){
-        return "comiendo";
+    public Snicker(int serie, PrecioProducto precioProducto) {
+        super(serie, precioProducto.SNICKERS);
     }
 
-    public String comer() {
-        return "Snicker";
+    public String ingerir(){
+        return "SUPER8";
     }
+
 }
