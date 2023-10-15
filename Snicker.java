@@ -5,7 +5,7 @@ public class Snicker extends Dulce {
         super(serie, precioProducto.SNICKERS);
     }
     public String ingerir(){
-        return "SUPER8";
+        return "SNICKERS";
     }
 
 }
