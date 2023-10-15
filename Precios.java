@@ -1,6 +1,6 @@
 package com.example;
-
-enum TipoProducto {
+//clase para enum para establecer los precios de cada producto
+enum Precios {
     COCA(1000),
     SPRITE(1000),
     FANTA(1000),
@@ -9,7 +9,7 @@ enum TipoProducto {
 
     private final int precio;
 
-    TipoProducto(int precio) {
+    Precios(int precio) {
         this.precio = precio;
     }
 

@@ -17,7 +17,6 @@ class Expendedor {
             productos.addItem(new Dulce(TipoProducto.SNICKERS));
             productos.addItem(new Dulce(TipoProducto.SUPER8));
         }
-
         for (int i = 0; i < cantidadMonedas; i++) {
             monedas.addItem(new Moneda(100));
             monedas.addItem(new Moneda(500));

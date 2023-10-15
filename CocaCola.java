@@ -2,15 +2,12 @@ package com.example;
 
 class CocaCola extends Bebida {
 
-    public CocaCola(int serie) {
-        super(serie);
-    }
-    public String ingerir(){
-        return "bebiendo";
+    public CocaCola(int serie, PrecioProducto precioProducto) {
+        super(serie, precioProducto.COCA);
     }
 
-    public String beber() {
-        return "cocacola";
+    public String ingerir(){
+        return "CocaCola";
     }
 
 }
