@@ -6,7 +6,7 @@ public class Snicker extends Dulce {
     }
 
     public String ingerir(){
-        return "SUPER8";
+        return "SNICKERS";
     }
 
 }
