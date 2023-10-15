@@ -14,5 +14,5 @@ enum PrecioProducto {
     }
 
     public int getPrecio() {
-        return precio;}
+        return precio;}
 }

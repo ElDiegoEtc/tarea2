@@ -17,4 +17,5 @@ abstract class Producto {
 
     public PrecioProducto getPrecioProducto() {
         return precioProducto;
-    }}
+    }
+}
