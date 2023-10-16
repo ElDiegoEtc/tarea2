@@ -5,17 +5,16 @@ class Comprador {
     private int vuelto;
 
     public Comprador(Moneda m, int eleccion, Expendedor exp) {
-        Bebida b = exp.comprarBebida(m, eleccion);
+        Producto p = exp.comprarProducto(m, eleccion);
 
         Moneda moneda = null;
         while ((moneda = exp.getVuelto()) != null) {
             this.vuelto += moneda.getValor();
         }
-        if (b != null) {
-            this.sonido = b.beber();
+        if (p != null) {
+            this.sonido = p.ingerir();
         }
     }
-
     public int cuantoVuelto() {
         return vuelto;
     }

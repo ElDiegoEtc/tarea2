@@ -1,81 +1,71 @@
 package com.example;
 class Expendedor {
-    public static final int COCA=1;
-    public static final int SPRITE=2;
+    public static final int COCA=1, SPRITE=2, FANTA=3, SNICKER=4, SUPER8= 5; //REMPLAZAR CON ENUM EXTRA
+    private int precioProductos;
+    private DepositoGenerico<Producto> coca;
+    private DepositoGenerico<Producto> sprite;
+    private DepositoGenerico<Producto> fanta;
+    private DepositoGenerico<Producto> snicker;
+    private DepositoGenerico<Producto> super8;
+    private DepositoGenerico<Moneda> monedas;
+    private DepositoGenerico<Moneda> monedasVuelto;
 
-    private int precioBebidas;
-    private Deposito coca;
-    private Deposito sprite;
-    private DepositoM monVu;
+    public Expendedor(int cantidadProductos) {
+        precioProductos= PrecioProducto.COCA.getPrecio(); // Precio base
+        coca = new DepositoGenerico<>();
+        fanta = new DepositoGenerico<>();
+        sprite = new DepositoGenerico<>();
+        snicker = new DepositoGenerico<>();
+        super8 = new DepositoGenerico<>();
+        monedas = new DepositoGenerico<>();
+        monedasVuelto = new DepositoGenerico<>();
+        //creo que se puede resumir asi: DepositoGenerico<?> coca, fanta, sprite, snicker, super8, monedas, monedasVuelto;
 
-    public Expendedor(int numBebidas, int precioBebidas) {
-        coca = new Deposito();
-        sprite = new Deposito();
-        monVu = new DepositoM();
-        this.precioBebidas = precioBebidas;
-
-        int c = 100, s = 200;
-        for(int i = 0; i < numBebidas; i++) {
-            Bebida cola = new CocaCola(c);
-            Bebida sprt = new Sprite(s);
-            coca.addBebida(cola);
-            sprite.addBebida(sprt);
+        int c =0, s=1000, f=2000 ,sn=3000 ,S8=4000 ;
+        for (int i = 0; i < cantidadProductos; i++) {
+            coca.addItem(new CocaCola(c,PrecioProducto.COCA));
+            sprite.addItem(new Sprite(s,PrecioProducto.SPRITE));
+            fanta.addItem(new Fanta(f,PrecioProducto.FANTA));
+            snicker.addItem(new Snicker(sn, PrecioProducto.SNICKERS));
+            super8.addItem(new Super8(S8, PrecioProducto.SUPER8));
             c++;
             s++;
+            f++;
+            sn++;
+            S8++;
         }
     }
 
-    public Bebida comprarBebida(Moneda m, int cual){
-        Bebida b = null;
+    public Producto comprarProducto(Moneda m, int eleccion){
+        Producto p = null;
 
-        if(m!=null && m.getValor()>=precioBebidas){
-            if(cual==COCA)      b=coca.getBebida();
-            else if(cual==SPRITE) b=sprite.getBebida();
+        if(m!=null && m.getValor()>=precioProductos){
+            if(eleccion==COCA)      p=coca.getItem();
+            else if(eleccion==SPRITE) p=sprite.getItem();
+            else if(eleccion==FANTA) p=fanta.getItem();
+            else if(eleccion==SNICKER) p=snicker.getItem();
+            else if(eleccion==SUPER8) p=super8.getItem();
 
-            if(b!=null){
-                int n = (m.getValor()-precioBebidas)/100;
+            if(p!=null){
+                int n = (m.getValor()-precioProductos)/100;
                 while (n>0) {
-                    monVu.addMoneda(new Moneda100());
+                    monedasVuelto.addItem(new Moneda100());
                     n--;
                 }
             }
         }
-        if(b==null || m.getValor()<precioBebidas) monVu.addMoneda(m);
-        return b;
+        if(p==null || m.getValor()<precioProductos) monedasVuelto.addItem(m);
+        return p;
     }
 
     public Moneda getVuelto() {
-        return monVu.getMoneda();
+        return monedasVuelto.getItem();
     }
-
 }
 
 /*
 class Expendedor {
-    private int precioProductos;
-    private DepositoGenerico<Producto> productos;
-    private DepositoGenerico<Moneda> monedas;
-    private DepositoGenerico<Moneda> monedasVuelto;
 
-    public Expendedor(int cantidadProductos, int cantidadMonedas) {
-        precioProductos = PrecioProducto.COCA.getPrecio(); // Precio base
-        productos = new DepositoGenerico<>();
-        monedas = new DepositoGenerico<>();
-        monedasVuelto = new DepositoGenerico<>();
-
-        for (int i = 0; i < cantidadProductos; i++) {
-            productos.addItem(new CocaCola(1,PrecioProducto.COCA));
-            productos.addItem(new Sprite(2,PrecioProducto.SPRITE));
-            productos.addItem(new Fanta(3,PrecioProducto.SPRITE));
-            productos.addItem(new Snicker(4, PrecioProducto.SNICKERS));
-            productos.addItem(new Super8(5, PrecioProducto.SUPER8));
-        }
-        for (int i = 0; i < cantidadMonedas; i++) {
-            monedas.addItem(new Moneda100());
-            monedas.addItem(new Moneda500());
-            monedas.addItem(new Moneda1000());
-        }
-    }
     /*public Producto comprarProducto(Moneda moneda, PrecioProducto precioProducto)
             throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
         if (moneda == null) {
@@ -104,4 +94,4 @@ class Expendedor {
         return monedasVuelto.getItem();
     }
 }
-
+*/
