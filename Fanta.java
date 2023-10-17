@@ -7,7 +7,7 @@ class Fanta extends Bebida {
     }
 
     public String ingerir(){
-        return "Sprite";
+        return "Fanta";
     }
 
 }

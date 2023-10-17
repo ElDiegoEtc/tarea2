@@ -1,4 +1,8 @@
 package com.example;
+
+/**
+ * @class
+ */
 class Expendedor {
     public static final int COCA=1, SPRITE=2, FANTA=3, SNICKER=4, SUPER8= 5; //REMPLAZAR CON ENUM EXTRA
     private int precioProductos;
@@ -10,6 +14,10 @@ class Expendedor {
     private DepositoGenerico<Moneda> monedas;
     private DepositoGenerico<Moneda> monedasVuelto;
 
+    /**
+     *
+     * @param cantidadProductos
+     */
     public Expendedor(int cantidadProductos) {
         precioProductos= PrecioProducto.COCA.getPrecio(); // Precio base
         coca = new DepositoGenerico<>();
@@ -54,6 +62,12 @@ class Expendedor {
         }
     }*/
 
+    /**
+     *
+     * @param m
+     * @param eleccion
+     * @return
+     */
     public Producto comprarProducto(Moneda m, int eleccion){
         Producto p = null;
 
@@ -76,6 +90,10 @@ class Expendedor {
         return p;
     }
 
+    /**
+     *
+     * @return
+     */
     public Moneda getVuelto() {
         return monedasVuelto.getItem();
     }

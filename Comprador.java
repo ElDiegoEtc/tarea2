@@ -1,6 +1,6 @@
 package com.example;
 
-class Comprador {
+public class Comprador {
     private String sonido;
     private int vuelto;
 
@@ -15,6 +15,7 @@ class Comprador {
             this.sonido = p.ingerir();
         }
     }
+
     public int cuantoVuelto() {
         return vuelto;
     }
@@ -22,5 +23,4 @@ class Comprador {
     public String queBebiste() {
         return sonido;
     }
-
 }

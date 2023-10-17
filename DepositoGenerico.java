@@ -3,6 +3,7 @@ package com.example;
 import java.util.ArrayList;
 
 public class DepositoGenerico<T> {
+
     private ArrayList<T> items;
 
     public DepositoGenerico() {
