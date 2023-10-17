@@ -19,9 +19,27 @@ class Expendedor {
         super8 = new DepositoGenerico<>();
         monedas = new DepositoGenerico<>();
         monedasVuelto = new DepositoGenerico<>();
+
+        for (BucleProducto producto : BucleProducto.values()) {
+            for (int i = 0; i < cantidadProductos; i++) {
+                if (producto == BucleProducto.c) {
+                    coca.addItem(new CocaCola(producto.getN(), PrecioProducto.COCA));
+                } else if (producto == BucleProducto.s) {
+                    sprite.addItem(new Sprite(producto.getN(), PrecioProducto.SPRITE));
+                } else if (producto == BucleProducto.f) {
+                    fanta.addItem(new Fanta(producto.getN(), PrecioProducto.FANTA));
+                } else if (producto == BucleProducto.sn) {
+                    snicker.addItem(new Snicker(producto.getN(), PrecioProducto.SNICKERS));
+                } else if (producto == BucleProducto.S8) {
+                    super8.addItem(new Super8(producto.getN(), PrecioProducto.SUPER8));
+                }
+            }
+        }
+    }
         //creo que se puede resumir asi: DepositoGenerico<?> coca, fanta, sprite, snicker, super8, monedas, monedasVuelto;
 
-        int c =0, s=1000, f=2000 ,sn=3000 ,S8=4000 ;
+
+        /*int c =0, s=1000, f=2000 ,sn=3000 ,S8=4000 ;
         for (int i = 0; i < cantidadProductos; i++) {
             coca.addItem(new CocaCola(c,PrecioProducto.COCA));
             sprite.addItem(new Sprite(s,PrecioProducto.SPRITE));
@@ -34,7 +52,7 @@ class Expendedor {
             sn++;
             S8++;
         }
-    }
+    }*/
 
     public Producto comprarProducto(Moneda m, int eleccion){
         Producto p = null;
