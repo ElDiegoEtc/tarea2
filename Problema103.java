@@ -12,6 +12,17 @@ public class Problema103 {
         c = new Comprador(m,2,exp);
         System.out.println(c.queBebiste()+", " + c.cuantoVuelto());
 
+        m = new Moneda1500();
+        c = new Comprador(m,Expendedor.SPRITE,exp);
+        System.out.println(c.queBebiste()+", " + c.cuantoVuelto());
+        m = new Moneda1500();
+        c = new Comprador(m,Expendedor.SPRITE,exp);
+        System.out.println(c.queBebiste()+", " + c.cuantoVuelto());
+        m = new Moneda1500();
+        c = new Comprador(m,Expendedor.SPRITE,exp);
+        System.out.println(c.queBebiste()+", " + c.cuantoVuelto());
+
+
     }
 }
 

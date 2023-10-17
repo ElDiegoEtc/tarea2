@@ -13,5 +13,23 @@ enum Valoresserie {
     }
 
     public int getNum() {
-        return num;}
+        return num;
+    }
+}
+
+
+enum BucleProducto {
+    c(0),
+    s(1000),
+    f(2000),
+    sn(3000),
+    S8(4000);
+    private final int n;
+
+    BucleProducto(int n) {
+        this.n= n;
+    }
+
+    public int getN() {
+        return n;}
 }
