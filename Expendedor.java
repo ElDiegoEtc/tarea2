@@ -40,11 +40,11 @@ class Expendedor {
         Producto p = null;
 
         if(m!=null && m.getValor()>=precioProductos){
-            if(eleccion==COCA)      p=coca.getItem();
-            else if(eleccion==SPRITE) p=sprite.getItem();
-            else if(eleccion==FANTA) p=fanta.getItem();
-            else if(eleccion==SNICKER) p=snicker.getItem();
-            else if(eleccion==SUPER8) p=super8.getItem();
+            if(eleccion==Valoresserie.COCA.ordinal()) p=coca.getItem();
+            else if(eleccion==Valoresserie.SPRITE.ordinal()) p=sprite.getItem();
+            else if(eleccion==Valoresserie.FANTA.ordinal()) p=fanta.getItem();
+            else if(eleccion==Valoresserie.SNICKER.ordinal()) p=snicker.getItem();
+            else if(eleccion==Valoresserie.SUPER8.ordinal()) p=super8.getItem();
 
             if(p!=null){
                 int n = (m.getValor()-precioProductos)/100;
