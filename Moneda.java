@@ -1,6 +1,5 @@
 package com.example;
-
-abstract class Moneda {
+abstract class Moneda implements Comparable<Moneda>{
 
     public Moneda() {
     }
@@ -9,5 +8,10 @@ abstract class Moneda {
     }
 
     public abstract int getValor();
+
+    public int compareTo(Moneda anycoin){
+        int comparacion = Integer.compare(this.getValor(), anycoin.getValor());
+        return comparacion;
+    }
 
 }

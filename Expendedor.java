@@ -4,14 +4,13 @@ package com.example;
  * @class
  */
 class Expendedor {
-    public static final int COCA=1, SPRITE=2, FANTA=3, SNICKER=4, SUPER8= 5; //REMPLAZAR CON ENUM EXTRA
+    //REMPLAZAR CON ENUM EXTRA
     private int precioProductos;
     private DepositoGenerico<Producto> coca;
     private DepositoGenerico<Producto> sprite;
     private DepositoGenerico<Producto> fanta;
     private DepositoGenerico<Producto> snicker;
     private DepositoGenerico<Producto> super8;
-    private DepositoGenerico<Moneda> monedas;
     private DepositoGenerico<Moneda> monedasVuelto;
 
     /**
@@ -25,7 +24,6 @@ class Expendedor {
         sprite = new DepositoGenerico<>();
         snicker = new DepositoGenerico<>();
         super8 = new DepositoGenerico<>();
-        monedas = new DepositoGenerico<>();
         monedasVuelto = new DepositoGenerico<>();
 
         for (BucleProducto producto : BucleProducto.values()) {
@@ -37,7 +35,7 @@ class Expendedor {
                 } else if (producto == BucleProducto.f) {
                     fanta.addItem(new Fanta(producto.getN(), PrecioProducto.FANTA));
                 } else if (producto == BucleProducto.sn) {
-                    snicker.addItem(new Snicker(producto.getN(), PrecioProducto.SNICKERS));
+                    snicker.addItem(new Snicker(producto.getN(), PrecioProducto.SNICKER));
                 } else if (producto == BucleProducto.S8) {
                     super8.addItem(new Super8(producto.getN(), PrecioProducto.SUPER8));
                 }
@@ -71,12 +69,27 @@ class Expendedor {
     public Producto comprarProducto(Moneda m, int eleccion){
         Producto p = null;
 
-        if(m!=null && m.getValor()>=precioProductos){
-            if(eleccion==Valoresserie.COCA.ordinal()) p=coca.getItem();
-            else if(eleccion==Valoresserie.SPRITE.ordinal()) p=sprite.getItem();
-            else if(eleccion==Valoresserie.FANTA.ordinal()) p=fanta.getItem();
-            else if(eleccion==Valoresserie.SNICKER.ordinal()) p=snicker.getItem();
-            else if(eleccion==Valoresserie.SUPER8.ordinal()) p=super8.getItem();
+        if(m!=null && m.getValor()>=precioProductos){//USAR EN VEZ DE ORDINAL EL GETTER DE VALOR Serie
+            if(eleccion==Valoresserie.COCA.getNum()){
+                p=coca.getItem();
+                precioProductos = PrecioProducto.COCA.getPrecio();
+            }
+            else if(eleccion==Valoresserie.SPRITE.getNum()) {
+                p=sprite.getItem();
+                precioProductos = PrecioProducto.SPRITE.getPrecio();
+            }
+            else if(eleccion==Valoresserie.FANTA.getNum()){
+                p=fanta.getItem();
+                precioProductos = PrecioProducto.FANTA.getPrecio();
+            }
+            else if(eleccion==Valoresserie.SNICKER.getNum()){
+                p=snicker.getItem();
+                precioProductos = PrecioProducto.SNICKER.getPrecio();
+            }
+            else if(eleccion==Valoresserie.SUPER8.getNum()){
+                p=super8.getItem();
+                precioProductos = PrecioProducto.SUPER8.getPrecio();
+            }
 
             if(p!=null){
                 int n = (m.getValor()-precioProductos)/100;

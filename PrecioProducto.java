@@ -4,7 +4,7 @@ enum PrecioProducto {
     COCA(1000),
     SPRITE(1000),
     FANTA(1000),
-    SNICKERS(1500),
+    SNICKER(1500),
     SUPER8(1200);
 
     private final int precio;
