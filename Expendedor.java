@@ -4,7 +4,6 @@ package com.example;
  * @class
  */
 class Expendedor {
-    //REMPLAZAR CON ENUM EXTRA
     private int precioProductos;
     private DepositoGenerico<Producto> coca;
     private DepositoGenerico<Producto> sprite;
@@ -18,7 +17,7 @@ class Expendedor {
      * @param cantidadProductos
      */
     public Expendedor(int cantidadProductos) {
-        precioProductos= PrecioProducto.COCA.getPrecio(); // Precio base
+        precioProductos = PrecioProducto.COCA.getPrecio(); // Precio base
         coca = new DepositoGenerico<>();
         fanta = new DepositoGenerico<>();
         sprite = new DepositoGenerico<>();
@@ -42,23 +41,6 @@ class Expendedor {
             }
         }
     }
-        //creo que se puede resumir asi: DepositoGenerico<?> coca, fanta, sprite, snicker, super8, monedas, monedasVuelto;
-
-
-        /*int c =0, s=1000, f=2000 ,sn=3000 ,S8=4000 ;
-        for (int i = 0; i < cantidadProductos; i++) {
-            coca.addItem(new CocaCola(c,PrecioProducto.COCA));
-            sprite.addItem(new Sprite(s,PrecioProducto.SPRITE));
-            fanta.addItem(new Fanta(f,PrecioProducto.FANTA));
-            snicker.addItem(new Snicker(sn, PrecioProducto.SNICKERS));
-            super8.addItem(new Super8(S8, PrecioProducto.SUPER8));
-            c++;
-            s++;
-            f++;
-            sn++;
-            S8++;
-        }
-    }*/
 
     /**
      *
@@ -66,40 +48,38 @@ class Expendedor {
      * @param eleccion
      * @return
      */
-    public Producto comprarProducto(Moneda m, int eleccion){
+    public Producto comprarProducto(Moneda m, int eleccion) throws NoHayProductoException,
+            PagoInsuficienteException, PagoIncorrectoException {
         Producto p = null;
-
-        if(m!=null && m.getValor()>=precioProductos){//USAR EN VEZ DE ORDINAL EL GETTER DE VALOR Serie
-            if(eleccion==Valoresserie.COCA.getNum()){
-                p=coca.getItem();
+        if (m == null) throw new PagoIncorrectoException ("Pago no relizado");
+        if (m.getValor() < precioProductos) throw new PagoInsuficienteException("Pago Insuficiente, " + m.getValor());
+        if (m != null && m.getValor() >= precioProductos) {
+            if (eleccion == Valoresserie.COCA.getNum()) {
+                p = coca.getItem();
                 precioProductos = PrecioProducto.COCA.getPrecio();
-            }
-            else if(eleccion==Valoresserie.SPRITE.getNum()) {
-                p=sprite.getItem();
+            } else if (eleccion == Valoresserie.SPRITE.getNum()) {
+                p = sprite.getItem();
                 precioProductos = PrecioProducto.SPRITE.getPrecio();
-            }
-            else if(eleccion==Valoresserie.FANTA.getNum()){
-                p=fanta.getItem();
+            } else if (eleccion == Valoresserie.FANTA.getNum()) {
+                p = fanta.getItem();
                 precioProductos = PrecioProducto.FANTA.getPrecio();
-            }
-            else if(eleccion==Valoresserie.SNICKER.getNum()){
-                p=snicker.getItem();
+            } else if (eleccion == Valoresserie.SNICKER.getNum()) {
+                p = snicker.getItem();
                 precioProductos = PrecioProducto.SNICKER.getPrecio();
-            }
-            else if(eleccion==Valoresserie.SUPER8.getNum()){
-                p=super8.getItem();
+            } else if (eleccion == Valoresserie.SUPER8.getNum()) {
+                p = super8.getItem();
                 precioProductos = PrecioProducto.SUPER8.getPrecio();
             }
-
-            if(p!=null){
-                int n = (m.getValor()-precioProductos)/100;
-                while (n>0) {
+            if (p == null) throw new NoHayProductoException("No hay producto de lo solicitado, " + m.getValor());
+            if (p != null) {
+                int n = (m.getValor() - precioProductos) / 100;
+                while (n > 0) {
                     monedasVuelto.addItem(new Moneda100());
                     n--;
                 }
             }
         }
-        if(p==null || m.getValor()<precioProductos) monedasVuelto.addItem(m);
+        if (p == null || m.getValor() < precioProductos) monedasVuelto.addItem(m);
         return p;
     }
 
@@ -111,36 +91,3 @@ class Expendedor {
         return monedasVuelto.getItem();
     }
 }
-
-/*
-class Expendedor {
-
-    /*public Producto comprarProducto(Moneda moneda, PrecioProducto precioProducto)
-            throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
-        if (moneda == null) {
-            throw new PagoIncorrectoException();
-        }
-
-        Producto producto = null;
-
-        if (productos.isEmpty()) {
-            throw new NoHayProductoException();
-        }
-
-        int precioProducto = tipoProducto.getPrecio();
-
-        if (moneda.getValor() < precioProducto) {
-            throw new PagoInsuficienteException(precioProducto - moneda.getValor());
-        }
-
-        producto = productos.getItem();
-        monedasVuelto.addMoneda(new Moneda(moneda.getValor() - precioProducto));
-
-        return producto;
-    }
-
-    public Moneda getVuelto() {
-        return monedasVuelto.getItem();
-    }
-}
-*/
