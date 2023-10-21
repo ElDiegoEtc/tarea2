@@ -1,10 +1,10 @@
-/*package com.example;
+package com.example;
 
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class CompradorTest {
     private Moneda m;
@@ -12,20 +12,20 @@ class CompradorTest {
     private Comprador c;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp(){
         m = new Moneda1000();
         e = new Expendedor(10);
-        c = new Comprador(m, 1, e);
     }
     @Test
-    public int cuantoVueltotest(){
+    public void testCuantoVuelto() throws Exception{
+        c = new Comprador(m, 1, e);
 
+        assertEquals(0, c.cuantoVuelto());
     }
+    @Test
+    public void testqueBebiste() throws Exception{
+        c = new Comprador(m, 3, e);
 
-
-
-
-    @AfterEach
-    void tearDown() {
+        assertEquals("Fanta", c.queBebiste());
     }
-}*/
+}
